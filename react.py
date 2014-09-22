@@ -99,7 +99,7 @@ class Subject:
     if doc['gender'].value.strip() != 'Male' or'Female':
       doc['error'].value = 'Gender needs to be Male or Female'
       return
-    if doc['year'].value.strip() = '':
+    if doc['year'].value.strip() == '':
       doc['error'].value = 'Birth Year Please'
       return
     for elt in ('ready','lights','notetab'):
