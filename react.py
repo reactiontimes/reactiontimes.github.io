@@ -62,7 +62,8 @@ class StopLights:
         self.subjects[-1].setgaps(self.gaps)
         doc['result'].value = '\n'.join(
           [subject.result() for subject in self.subjects])
-        doc['zone'].value = 'please email results to '
+        doc['zone'].value = ("please email results to kaya.dahlke@gmail.com or 'click'"
+            "to record another person")
     if self.count > 0: #do another test
       showHide('green',0)
       showHide('red',1)
@@ -81,6 +82,12 @@ class StopLights:
       else:  # pused to early so restart timer
         self.falsePress()
     else: # state 'done'
+      showHide('lights',1)
+      s=Subject()
+      self.subjects.append(s)
+      s.clear()
+      showHide('ready',1)
+      showHide('notetab',1)
       pass
       
 
