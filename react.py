@@ -94,7 +94,13 @@ class Subject:
   def ready(self,ev):
     print('--{}--'.format(doc["name"].value))
     if doc['name'].value.strip() == '':
-      doc['error'].value = 'name please'
+      doc['error'].value = 'Name Please'
+      return
+    if doc['gender'].value != 'Male' or'Female':
+      doc['error'].value = 'Gender needs to be Male or Female'
+      return
+    if doc['year'].value = '':
+      doc['error'].value = 'Birth Year Please'
       return
     for elt in ('ready','lights','notetab'):
       showHide(elt)
