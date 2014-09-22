@@ -7,8 +7,7 @@ def random():
   return .5
 def echo(ev):
   alert(doc["zone"].value)
-def encode(values):
-  return [str(v) for v in values]
+
 def showHide(elt,mode=None):
   inv=doc[elt].style.visibility
   print('v',elt,inv)
@@ -113,10 +112,20 @@ class Subject:
     doc['gender'].value = ''
     doc['year'].value = ''
   def setgaps(self,gaps):
-    self.gaps=[str(gap) for gap in gaps]
+    self.gaps=[gap for gap in gaps]
+  @staticmethod
+  def encode(values):
+    def check(v):
+      res='{:.5f}'.format(v)
+      digits = [(ord(r)-ord('0'))*(count+1)
+        for count,r in enumerate(res) if r != '.']
+      res += chr(sum(digits)%10+ord('a'))
+      #print(digits,res)
+      return res
+    return [check(v) for v in values]
   def result(self):
     return '{},{},{},{}'.format(self.name,self.gender,self.year
-          , ','.join(encode(self.gaps)))
+          , ','.join(self.encode(self.gaps)))
     
 showHide('green')
 showHide('orange')
