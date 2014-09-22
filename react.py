@@ -82,14 +82,12 @@ class StopLights:
       else:  # pused to early so restart timer
         self.falsePress()
     else: # state 'done'
-      showHide('lights',1)
+      showHide('lights',0)
       s=Subject()
       self.subjects.append(s)
       s.clear()
       showHide('ready',1)
       showHide('notetab',1)
-      pass
-      
 
 
 class Subject:  
@@ -104,6 +102,10 @@ class Subject:
     self.name = doc['name'].value
     self.gender = doc['gender'].value
     self.year= doc['year'].value
+  def clear(self):
+    doc['name'].value = ''
+    doc['gender'].value = ''
+    doc['year'].value = ''
   def setgaps(self,gaps):
     self.gaps=[str(gap) for gap in gaps]
   def result(self):
