@@ -56,7 +56,7 @@ class StopLights:
       if self.state== 'test':
         self.gaps=[]
         doc['zone'].value = self.state = 'main'
-        self.count = 2
+        self.count = 5
       else:
         self.state = 'done'
         self.subjects[-1].setgaps(self.gaps)
