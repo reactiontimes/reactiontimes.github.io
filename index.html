@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="http://brython.info/src/brython_dist.js"></script>
+        <title>SwackyWeb|Reaction Times</title>
+    </head>
+    <body onload="brython()">
+        <script type="text/python" src="react.py"></script>
+        <h1>Reaction Times</h1>
+        <h2>Whats you reaction time??</h2>
+        <h3>Lets find out!!</h3>
+        <p>
+            To find out how!!
+            Just fill you name, gender and date of birth!!
+            After you have done that you can start!!
+        </p>
+                <table border="0" cellpadding="0" cellspacing="0"
+        width="100%" align="center">
+         <tr bgcolor="#ffffff" >
+        <td><center>Name</center></td><td><center>Gender</center></td><td><center>Birth Year</center></td>
+         </tr><tr>
+           <td><center><input id="name"></td><td></center><center><input id="gender"></td><td></center><center><input id="year"></td></center>
+         </tr>
+         <tr id="notetab">
+           <td><center>Use just a short name or nicname to help label your data.</center>
+           <center>The name will not be part of the final information</center></td>
+           <td><center>Gender is for statistics</center></td><td><center>Birth Year is used only to place statistics in groups</center></td>
+            </tr><tr id="ready">
+           <td><button id="readybutton">Ready</button><input id='error'></td>
+         </tr>
+        </table>
+        <table border="0" id="lights" cellpadding="0" cellspacing="0"
+        width="100%" align="center">
+         <tr>
+           <td width="33%">
+             <textarea id="zone" rows="10" cols="20" readonly></textarea>
+           </td>
+           <td>
+            <center>
+             <table>
+               <tr>
+                 <td><img src="dot-red.png" id = "red"
+        name="stoplight" width="36" height="36" border="0"></td>
+               </tr>
+                 <td><img src="dot-orange.png" id = "orange"
+        name="stoplight" width="36" height="36" border="0"></td>
+               </tr>
+                 <td><img src="dot-green.png" id = "green"
+        name="stoplight" width="36" height="36" border="0"></td>
+               </tr>
+             </table>
+            </center>
+           </td>
+           <td>
+             <button id="mybutton">click!</button></p>
+           </td>
+         </tr>
+        <tr><td span="3">
+            </td></tr>
+        </table>
+         <textarea id="result" rows="2" cols="50" border="0" readonly>
+
+ orange is the warning, press click on green</textarea>
+    </body>
+</html>

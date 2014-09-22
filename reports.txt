@@ -1,0 +1,6 @@
+#this the list of the reports
+#report name,starts age, end age,gender(male,female,all)
+younger boys,0,8,male
+younger girls,0,8,female
+tweens and teens,9,18,all
+all children,0,18,ALL
