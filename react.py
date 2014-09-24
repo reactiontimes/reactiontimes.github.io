@@ -1,4 +1,4 @@
-from browser import document,timer,alert,html
+from browser import document,window,timer,alert,html
 import time
 #from random import random as random1
 doc=document
@@ -91,11 +91,12 @@ class StopLights:
 
 class Subject:  
   def ready(self,ev):
-    print('--{}--'.format(doc["name"].value))
+    #window.open('mailto: fred@blogs?subject=stat&body=thebody','title')
+
     if doc['name'].value.strip() == '':
       doc['error'].value = 'Name Please'
       return
-    if doc['gender'].value.strip() in ['Male','Female']:
+    if doc['gender'].value.strip() not in ['Male','Female']:
       doc['error'].value = 'Gender needs to be Male or Female'
       return
     if doc['year'].value.strip() == '':

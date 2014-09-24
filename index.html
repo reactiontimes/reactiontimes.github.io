@@ -29,14 +29,16 @@
            <center>The name will not be part of the final information</center></td>
            <td><center>Gender is for statistics</center></td><td><center>Birth Year is used only to place statistics in groups</center></td>
             </tr><tr id="ready">
-              <td><button id="readybutton">Ready</button><input id='error'></td>
+              <td><button id="readybutton">Ready</button>
+                <input id='error' maxlength="50" readonly style="border: none">
+              </td>
          </tr>
         </table>
         <table border="0" id="lights" cellpadding="0" cellspacing="0"
         width="100%" align="center">
          <tr>
            <td width="33%">
-             <textarea id="zone" rows="10" cols="20" readonly></textarea>
+             <textarea id="zone" rows="10" cols="20" style="border: none" readonly></textarea>
            </td>
            <td>
             <center>
@@ -61,7 +63,8 @@
         <tr><td span="3">
             </td></tr>
         </table>
-         <textarea id="result" rows="2" cols="50" border="0" readonly>
+        
+         <textarea id="result" rows="2" cols="50" style="border: none" readonly>
 
  orange is the warning, press click on green</textarea>
     </body>
