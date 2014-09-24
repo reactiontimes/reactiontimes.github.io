@@ -91,7 +91,6 @@ class StopLights:
 
 class Subject:  
   def ready(self,ev):
-<<<<<<< HEAD
     def getGender(self):
       for gender in {'genderF','genderM'}:
         if doc[gender].checked:
@@ -99,17 +98,10 @@ class Subject:
       return None
      
     #window.open('mailto: fred@blogs?subject=stat&body=thebody','title')
-=======
->>>>>>> origin/master
-
     if doc['name'].value.strip() == '':
       doc['error'].value = 'Name Please'
       return
-<<<<<<< HEAD
     if getGender() not in ['male','female']:
-=======
-    if doc['gender'].value.strip().lower() not in ['male','female']:
->>>>>>> origin/master
       doc['error'].value = 'Gender needs to be Male or Female'
       return
     if doc['year'].value.strip() == '':
@@ -150,9 +142,10 @@ class Results(object):
   @staticmethod
   def uenc(strng):
     def change(c):
-      o=ord(c)
+      ordc=ord(c)
+      hex='0123456789abcdef'
       if c <= '0':
-        return '%2f' # + '{:2x}'.format(o)
+        return '%' + hex[ordc // 16] + hex[ordc % 16]
       return c
     res=[change(c) for c in strng]
     return ''.join(res)
@@ -180,13 +173,13 @@ subjects=[Subject()]
 start=time.time()
 stops=StopLights(subjects,start)
 results=Results(subjects)
-"""
+
 subjects[0].name='fred'
 subjects[0].gender='Male'
 subjects[0].year='2014'
 subjects[0].setgaps([.2,.3])
 results.email_kaya("")
-"""
+
 doc['mybutton'].bind('click',stops.clicker)
 doc['readybutton'].bind('click',subjects[-1].ready)
 doc['email-kaya'].bind('click',results.email_kaya)
