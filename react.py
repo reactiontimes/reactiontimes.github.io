@@ -91,12 +91,18 @@ class StopLights:
 
 class Subject:  
   def ready(self,ev):
+    def getGender(self):
+      for gender in {'genderF','genderM'}:
+        if doc[gender].checked:
+          return doc[gender].value
+      return None
+     
     #window.open('mailto: fred@blogs?subject=stat&body=thebody','title')
 
     if doc['name'].value.strip() == '':
       doc['error'].value = 'Name Please'
       return
-    if doc['gender'].value.strip() not in ['Male','Female']:
+    if getGender() not in ['male','female']:
       doc['error'].value = 'Gender needs to be Male or Female'
       return
     if doc['year'].value.strip() == '':
@@ -106,7 +112,8 @@ class Subject:
       showHide(elt)
     doc['zone'].value ='There will be 3 test runs\n press click to start'
     self.name = doc['name'].value
-    self.gender = doc['gender'].value
+    print(doc['genderF'])
+    self.gender = getGender()
     self.year= doc['year'].value
   def clear(self):
     doc['name'].value = ''
