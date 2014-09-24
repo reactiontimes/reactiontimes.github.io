@@ -85,6 +85,7 @@ class StopLights:
       s=Subject()
       self.subjects.append(s)
       s.clear()
+      doc['readybutton'].unbind('click')
       doc['readybutton'].bind('click',s.ready)
       showHide('ready',1)
       showHide('notetab',1)
