@@ -1,5 +1,6 @@
 from browser import document,window,timer,alert,html
 import time
+#from urllib import parse
 #from random import random as random1
 doc=document
 
@@ -43,6 +44,7 @@ class StopLights:
     self.state = 'test'
     green =False
     doc['zone'].value = 'test'
+    doc['result'] = "Orange is the warning, press 'Click!' on green"
     self.count = 3
     self.interval=timer.set_interval(self.doOrange,2000)
     
@@ -59,10 +61,8 @@ class StopLights:
       else:
         self.state = 'done'
         self.subjects[-1].setgaps(self.gaps)
-        doc['result'].value = '\n'.join(
-          [subject.result() for subject in self.subjects])
-        doc['zone'].value = ("please email results to kaya.dahlke@gmail.com or 'click'"
-            "to record another person")
+        showHide('resultButtons',1)
+        doc['result'].value = ("'Click!' to record another person or Click an email button to send results")
     if self.count > 0: #do another test
       showHide('green',0)
       showHide('red',1)
@@ -91,6 +91,7 @@ class StopLights:
 
 class Subject:  
   def ready(self,ev):
+<<<<<<< HEAD
     def getGender(self):
       for gender in {'genderF','genderM'}:
         if doc[gender].checked:
@@ -98,11 +99,17 @@ class Subject:
       return None
      
     #window.open('mailto: fred@blogs?subject=stat&body=thebody','title')
+=======
+>>>>>>> origin/master
 
     if doc['name'].value.strip() == '':
       doc['error'].value = 'Name Please'
       return
+<<<<<<< HEAD
     if getGender() not in ['male','female']:
+=======
+    if doc['gender'].value.strip().lower() not in ['male','female']:
+>>>>>>> origin/master
       doc['error'].value = 'Gender needs to be Male or Female'
       return
     if doc['year'].value.strip() == '':
@@ -110,7 +117,7 @@ class Subject:
       return
     for elt in ('ready','lights','notetab'):
       showHide(elt)
-    doc['zone'].value ='There will be 3 test runs\n press click to start'
+    doc['zone'].value ='There will be 3 test runs.\nPress click to start'
     self.name = doc['name'].value
     print(doc['genderF'])
     self.gender = getGender()
@@ -134,14 +141,54 @@ class Subject:
   def result(self):
     return '{},{},{},{}'.format(self.name,self.gender,self.year
           , ','.join(self.encode(self.gaps)))
+class Results(object):
+  def __init__(self,subjects):
+    self.subjects = subjects
+  def results(self):
+    return '\n'.join(
+          [subject.result() for subject in self.subjects])
+  @staticmethod
+  def uenc(strng):
+    def change(c):
+      o=ord(c)
+      if c <= '0':
+        return '%2f' # + '{:2x}'.format(o)
+      return c
+    res=[change(c) for c in strng]
+    return ''.join(res)
+
+  def email_kaya(self,ev):
+    stringk = self.uenc('Hi Kaya,\nHere are the results from '+self.subjects[0].name+':\n')
+    
+    stringk += self.uenc(self.results())
+    print('sk',stringk)
+    window.open('mailto: kaya.dahlke@gmail.com?subject=Results&body='+stringk,'Sending to Kaya')
+    
+  def email_sophie(self,ev):
+    stringk = self.uenc('Hi Kaya,\nHere are the results from '+self.subjects[0].name+':\n')
+    
+    stringk += self.uenc(self.results())
+    print('sk',stringk)
+    window.open('mailto: kaya.dahlke@gmail.com?subject=Results&body='+stringk,'Sending to Kaya')
+
     
 showHide('green')
 showHide('orange')
 showHide('lights')
+showHide('resultButtons',0)
 subjects=[Subject()]
 start=time.time()
 stops=StopLights(subjects,start)
+results=Results(subjects)
+"""
+subjects[0].name='fred'
+subjects[0].gender='Male'
+subjects[0].year='2014'
+subjects[0].setgaps([.2,.3])
+results.email_kaya("")
+"""
 doc['mybutton'].bind('click',stops.clicker)
 doc['readybutton'].bind('click',subjects[-1].ready)
+doc['email-kaya'].bind('click',results.email_kaya)
 
 print("hi")
