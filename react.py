@@ -96,7 +96,7 @@ class Subject:
     if doc['name'].value.strip() == '':
       doc['error'].value = 'Name Please'
       return
-    if doc['gender'].value.strip() not in ['Male','Female']:
+    if doc['gender'].value.strip().lower() not in ['male','female']:
       doc['error'].value = 'Gender needs to be Male or Female'
       return
     if doc['year'].value.strip() == '':
