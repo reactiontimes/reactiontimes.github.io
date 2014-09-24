@@ -159,14 +159,14 @@ class Results(object):
     
     stringk += self.uenc(self.results())
     print('sk',stringk)
-    window.open('mailto: kaya.dahlke@gmail.com?subject=Results&body='+stringk,'Sending to Kaya')
+    window.open('mailto:kaya.dahlke@gmail.com?subject=Results&body='+stringk,'Sending to Kaya')
     
   def email_sophie(self,ev):
     stringk = self.uenc('Hi Kaya,\nHere are the results from '+self.subjects[0].name+':\n')
     
     stringk += self.uenc(self.results())
     print('sk',stringk)
-    window.open('mailto: kaya.dahlke@gmail.com?subject=Results&body='+stringk,'Sending to Kaya')
+    window.open('mailto:kaya.dahlke@gmail.com?subject=Results&body='+stringk,'Sending to Kaya')
 
     
 showHide('green')
