@@ -85,8 +85,10 @@ class StopLights:
       s=Subject()
       self.subjects.append(s)
       s.clear()
+      doc['readybutton'].bind('click',s.ready)
       showHide('ready',1)
       showHide('notetab',1)
+      self.state = 'intro'
 
 
 class Subject:  
@@ -111,12 +113,13 @@ class Subject:
       showHide(elt)
     doc['zone'].value ='There will be 3 test runs.\nPress click to start'
     self.name = doc['name'].value
-    print(doc['genderF'])
+    
     self.gender = getGender()
     self.year= doc['year'].value
   def clear(self):
     doc['name'].value = ''
-    doc['gender'].value = ''
+    doc['genderF'].checked = False
+    doc['genderM'].checked = False
     doc['year'].value = ''
   def setgaps(self,gaps):
     self.gaps=[gap for gap in gaps]
@@ -173,13 +176,13 @@ subjects=[Subject()]
 start=time.time()
 stops=StopLights(subjects,start)
 results=Results(subjects)
-
+""" test of mail
 subjects[0].name='fred'
 subjects[0].gender='Male'
 subjects[0].year='2014'
 subjects[0].setgaps([.2,.3])
 results.email_kaya("")
-
+"""
 doc['mybutton'].bind('click',stops.clicker)
 doc['readybutton'].bind('click',subjects[-1].ready)
 doc['email-kaya'].bind('click',results.email_kaya)
