@@ -157,7 +157,7 @@ class Results(object):
     res=[change(c) for c in strng]
     return ''.join(res)
   def web_email(self,email):
-    doc['result'].value = ('If the email button didn't work you can cut, paste, email the results to '+email
+    doc['result'].value = ('If the email button didn\'t work you can cut, paste, email the results to '+email
                            +'\nHere are your results '+self.subjects[0].name+':\n'+self.results()
                           )
   def email_kaya(self,ev):
