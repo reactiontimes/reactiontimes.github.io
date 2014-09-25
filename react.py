@@ -62,7 +62,7 @@ class StopLights:
         self.state = 'done'
         self.subjects[-1].setgaps(self.gaps)
         showHide('resultButtons',1)
-        doc['result'].value = ("'Click!' to record another person or Click an email button to send results")
+        doc['result'].value = ("'Click!' to record another person or if all finished, Click an email button to send results")
     if self.count > 0: #do another test
       showHide('green',0)
       showHide('red',1)
@@ -142,7 +142,7 @@ class Results(object):
     self.subjects = subjects
   def results(self):
     return '\n'.join(
-          [subject.result() for subject in self.subjects])
+          [subject.result() for subject in self.subjects if hasattr(subject,'gaps')])
   @staticmethod
   def uenc(strng):
     def change(c):
@@ -153,22 +153,24 @@ class Results(object):
       return c
     res=[change(c) for c in strng]
     return ''.join(res)
-
+  def web_email(self,email):
+    doc['result'].value = ('You can now email the results to '+email
+                           +'\nHere are your results '+self.subjects[0].name+':\n'+self.results()
+                          )
   def email_kaya(self,ev):
     stringk = self.uenc('Hi Kaya,\nHere are the results from '+self.subjects[0].name+':\n')
-    
     stringk += self.uenc(self.results())
-    print('sk',stringk)
+    #print('sk',stringk)
     window.open('mailto:kaya.dahlke@gmail.com?subject=Results&body='+stringk,'Sending to Kaya')
+    self.web_email('Kaya: kaya.dahlke@gmail.com')
     
   def email_sophie(self,ev):
-    stringk = self.uenc('Hi Kaya,\nHere are the results from '+self.subjects[0].name+':\n')
-    
-    stringk += self.uenc(self.results())
-    print('sk',stringk)
-    window.open('mailto:kaya.dahlke@gmail.com?subject=Results&body='+stringk,'Sending to Kaya')
+    strings = self.uenc('Hi Sophie,\nHere are the results from '+self.subjects[0].name+':\n')
+    strings += self.uenc(self.results())
+    #print('ss',stringk)
+    window.open('mailto:swackyweb@gmail.com?subject=Results&body='+strings,'Sending to Sophie')
+    self.web_email('Sophie: swackyweb@gmail.com')
 
-    
 showHide('green')
 showHide('orange')
 showHide('lights')
@@ -187,5 +189,6 @@ results.email_kaya("")
 doc['mybutton'].bind('click',stops.clicker)
 doc['readybutton'].bind('click',subjects[-1].ready)
 doc['email-kaya'].bind('click',results.email_kaya)
+doc['email-sophie'].bind('click',results.email_sophie)
 
 print("hi")
