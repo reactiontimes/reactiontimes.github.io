@@ -43,8 +43,8 @@ class StopLights:
   def intro(self):
     self.state = 'test'
     green =False
-    doc['zone'].value = 'test'
-    doc['result'] = "Orange is the warning, press 'Click!' on green"
+    doc['zone'].value = '3 test runs\n Click as soon as light goes green'
+    doc['result'] = "Orange is the warning, then 2 to 5 seconds to green\n 'Click!' as soon as green appears"
     self.count = 3
     self.interval=timer.set_interval(self.doOrange,2000)
     
@@ -56,7 +56,8 @@ class StopLights:
     if self.count ==0:
       if self.state== 'test':
         self.gaps=[]
-        doc['zone'].value = self.state = 'main'
+        doc['zone'].value = 'now 5 main runs'
+        self.state = 'main'
         self.count = 5
       else:
         self.state = 'done'
@@ -82,6 +83,8 @@ class StopLights:
         self.falsePress()
     else: # state 'done'
       showHide('lights',0)
+      showHide('green',0)
+      showHide('red',1)
       s=Subject()
       self.subjects.append(s)
       s.clear()
