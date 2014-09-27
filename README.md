@@ -1,8 +1,9 @@
 ReactionTimes
 =============
 
-How to use this page:
-======================
+How to use the reaction web page:
+=================================
+Today we are going to test your rection times, here are the steps:
 To use this page you just put in your name, your gender and your date of birth. If you do this it will be part putting you in your age group.
 Click the button when the traffic light flashes GREEN, if you do click the button when the traffic light has not flashed GREEN the time for the the traffic light to turn GREEN will start all over again.
 After you have finished click an email button so that your results will be calculated and you will get an average, for your age group.
