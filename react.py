@@ -64,7 +64,7 @@ class StopLights:
         self.subjects[-1].setgaps(self.gaps)
         showHide('resultButtons',1)
         doc['result'].value = ("'Click!' to record another person or if all finished, press an email button to send results")
-        if self.subjects() > 1:
+        if len(self.subjects) > 1:
           self.compare()
         else:
           doc['zone'].value += '\nNow next person to get a comparison!'
@@ -77,7 +77,7 @@ class StopLights:
     self.interval=timer.set_interval(self.doGreen,2000 + random()*5000)
   def compare(self):
     family = [ (sum(subject.gaps)/len(subject.gaps),subject.name) for subject in self.subjects]
-    texts =  [ '{0[1]} score is {0[0]}'.format(person) for person in family]
+    texts =  [ '{0[1]} score is {0[0]:3f}'.format(person) for person in family]
     doc['zone'].value = '\n'.join(texts)
   def clicker(self,ev):
     if self.state== 'intro':
