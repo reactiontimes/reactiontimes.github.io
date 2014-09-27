@@ -9,7 +9,7 @@ To use this page each person just puts in their name, gender and year of birth, 
 Click the button when the traffic light becomes GREEN.  If you click the button when the traffic light has not flashed GREEN the time for the the traffic light to turn GREEN will start all over again.
 
 
-After everyone has finished click an email button so that we can have the results for our experiment where we will look at averages by age and other statistics.
+After everyone has finished click an email button so that we can have the results for our experiment where we will look at averages by age and medians and other statistics.
 
 I have made this page because...
 =================================

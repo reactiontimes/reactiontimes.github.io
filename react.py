@@ -77,7 +77,8 @@ class StopLights:
     self.interval=timer.set_interval(self.doGreen,2000 + random()*5000)
   def compare(self):
     family = [ (sum(subject.gaps)/len(subject.gaps),subject.name) for subject in self.subjects]
-    texts =  [ '{0[1]} score is {0[0]:3f}'.format(person) for person in family]
+    print(family)
+    texts =  [ '{0[1]} score is {0[0]:.3f}'.format(person) for person in sorted(family)]
     doc['zone'].value = '\n'.join(texts)
   def clicker(self,ev):
     if self.state== 'intro':
