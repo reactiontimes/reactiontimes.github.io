@@ -22,7 +22,7 @@ You can also see my other projects at http://swackyweb.github.io/ or on github.c
 
 How to use the report program:
 ==============================
-The reports (http://github.io.reactiontimes/reports) program reads a file of reaction times (playtext.txt) as comma separated values, one line per person. Have a look at the file.
+The reports (http://github.com/reactiontimes/reports) program reads a file of reaction times (playtext.txt) as comma separated values, one line per person. Have a look at the file.
 The program also uses a file (reports.txt) to decide what averages to calculate and makes a report from all the data.
 Download the 'report.py' to your computer and run it on your computer. You will need python3 installed (python.org).
 
