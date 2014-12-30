@@ -44,7 +44,7 @@ class StopLights:
     self.state = 'test'
     green =False
     doc['zone'].value = '3 test runs\n Click as soon as light goes green'
-    doc['result'] = "Orange is the warning, then 2 to 5 seconds to green\n 'Click!' as soon as green appears"
+    doc['result'].value = "Orange is the warning, then 2 to 5 seconds to green\n 'Click!' as soon as green appears"
     self.count = 3
     self.interval=timer.set_interval(self.doOrange,2000)
     
